@@ -1,0 +1,5 @@
+has_ip,url_len,is_short,nb_semico,nb_dslash,nb_slash,nb_colon,nb_tilde,abn_sd,nb_sd,nb_dot,nb_at,nb_and,nb_equal,nb_excl,nb_uscore,nb_hyphens,d_ratio,domain_s,domain_e,count_https,nb_hint,Url,Google PageRank,Trust Metric,Citation Flow,Domain Validity,Spam Score,External Backlinks,EDU Backlinks,PR Quality,Google Directory listed,DMOZ.org listed,Topic Value,Indexed URLs,Crawled Flag
+0.0,28.0,0.0,0.0,0.0,4.0,1.0,0.0,0.0,2.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.1,10277.0,2506.0,0.0,0.0,1.0,9.0,96.0,77.0,Found,1.0,2147483647.0,150205723.0,Very Strong,YES,NO,94.0,213213908.0,False
+0.0,110.875,1.0,0.0,0.0,4.0,1.0,0.0,0.0,2.0,2.0,0.0,0.0,1.0,0.0,2.0,4.0,0.04,5029.0,84.0,0.0,0.0,0.0,8.0,18.0,20.0,Found,0.0,40940.0,32.0,Very Strong,YES,NO,17.0,5341.0,False
+0.0,29.0,0.0,0.0,0.0,5.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.0,-1.0,0.0,0.0,0.0,2.0,0.0,14.0,Found,2.0,46.0,0.0,Weak,YES,NO,0.0,1788596.0,False
+0.0,22.0,1.0,0.0,0.0,3.0,1.0,0.0,0.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,-1.0,-1.0,0.0,0.0,0.0,9.0,85.0,78.0,Found,0.0,2147483647.0,14811970.0,Very Strong,YES,NO,63.0,40431739.0,False

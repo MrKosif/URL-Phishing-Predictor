@@ -29,13 +29,15 @@ def write_urls(array):
             st.markdown(original_title, unsafe_allow_html=True)
 
 def start_prediction(dataframe):
-    urls = dataframe["URL"]
+    urls = dataframe["url"]
     try:
         if advanced: # if advanced true
             features = e.main(advanced=True, urls=urls)
             prep_data = dp.main(features)
             prediction = p.predict(prep_data)
-            dataframe["prediction"] = np.round(np.resize(prediction, (prediction.shape[0])), 3)
+            pred = prediction > 0.5
+            dataframe["isPhishing"] = pred.reshape(-1).astype("str")
+            #dataframe["prediction"] = np.round(np.resize(prediction, (prediction.shape[0])), 3)
             return dataframe
 
         else:
@@ -43,10 +45,12 @@ def start_prediction(dataframe):
             dp.outlier("url_len", feature_df)
             pipeline = load(open('data/fast_pipeline.pkl', 'rb'))
             X_testp = pipeline.transform(feature_df)
-
             model = load_model("data/fast_model.h5")
             prediction = model.predict(X_testp)
-            dataframe["prediction"] = np.round(np.resize(prediction, (prediction.shape[0])), 3)
+            pred = prediction > 0.5
+            dataframe["isPhishing"] = pred.reshape(-1).astype("str")
+            #dataframe["prediction"] = dataframe["prediction"] > 0.5
+            #dataframe["prediction"] = np.round(np.resize(prediction, (prediction.shape[0])), 3)
             return dataframe
 
     except DivisionUndefined:# IndexError:
@@ -75,7 +79,6 @@ with st.sidebar:
     ### UPLOAD SECTION ####
     uploaded_file = st.file_uploader(label="Upload a csv file", type=["csv"])
     if uploaded_file is not None:
-        print("uploaded")
         df = pd.read_csv(uploaded_file)
         uploaded = True
         #write_urls(df["url"])
@@ -92,11 +95,10 @@ with st.sidebar:
         label="Enter Url Manually",
     )
     if manuel_input is not None:
-        print("manuel input")
         urls = manuel_input.split(",")
         if urls[0] != "":
             arr = np.array(urls)
-            df = pd.DataFrame(arr, columns=["URL"])
+            df = pd.DataFrame(arr, columns=["url"])
             if df.shape[0] > 1:
                 length = df.shape[0]
 
@@ -106,7 +108,6 @@ with st.sidebar:
         #st.button(label= "Start Detection")
         if st.button("Start Detection"):
             predicted_df = start_prediction(df)
-            print(predicted_df)
         
         if advanced == False:
             duration = round((length * 2.5)/60, 2)
@@ -126,5 +127,5 @@ with st.sidebar:
 col1, col2 = st.columns([3, 20])
 with col2:
     if predicted_df is not None:
-        st.dataframe(predicted_df[["URL", "prediction"]], width=700)
+        st.dataframe(predicted_df[["url", "isPhishing"]], width=700)
 

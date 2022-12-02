@@ -37,7 +37,6 @@ def start_prediction(dataframe):
             prediction = p.predict(prep_data)
             pred = prediction > 0.5
             dataframe["isPhishing"] = pred.reshape(-1).astype("str")
-            #dataframe["prediction"] = np.round(np.resize(prediction, (prediction.shape[0])), 3)
             return dataframe
 
         else:
@@ -49,14 +48,11 @@ def start_prediction(dataframe):
             prediction = model.predict(X_testp)
             pred = prediction > 0.5
             dataframe["isPhishing"] = pred.reshape(-1).astype("str")
-            #dataframe["prediction"] = dataframe["prediction"] > 0.5
-            #dataframe["prediction"] = np.round(np.resize(prediction, (prediction.shape[0])), 3)
             return dataframe
 
     except DivisionUndefined:# IndexError:
             
         st.warning("Please include http-https tags!")
-        # İnput box ile prediction yapacaksın
 
 
 st.set_page_config(layout="wide",
@@ -81,7 +77,6 @@ with st.sidebar:
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
         uploaded = True
-        #write_urls(df["url"])
         length = df.shape[0]
         file = True
 
@@ -105,7 +100,6 @@ with st.sidebar:
     ######################
     try:
         advanced = st.checkbox("Advanced Search")
-        #st.button(label= "Start Detection")
         if st.button("Start Detection"):
             predicted_df = start_prediction(df)
         

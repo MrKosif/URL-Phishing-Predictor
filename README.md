@@ -1,9 +1,9 @@
 <img src="/readme/best-practices-phishing-protection.jpeg" align="left" width="192px" height="192px"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
-> This project is created for detecting phishing websites using it's URL.
+> This project is created for detecting phishing websites using it's URLs.
 
-> URL Phishing Detector is a neural classifier model used to predict if a website is using for phishing attacks. It's originally created for using in a fraud & abuse team in a company. It contains an advanced model alongside with basic model to predict the most accurate results with a small drawback.
+> URL Phishing Detector is a neural classifier model used to predict if a website is used for phishing attacks. It contains an advanced model alongside with basic model to predict the most accurate results with a small drawback. It's currently used by the fraud & abuse team in a company. 
 <br>
 <br>
 
@@ -28,12 +28,12 @@ $ streamlit run ui.py
 ## Usage
 Manuel URL Steps:
   1. Enter a URL you want to test.
-  2. Select if you want advanced search.
+  2. Select if you want an advanced search.
 <img src="/readme/manuel.png" width="720px" height="338px"/>
 
 
 File Upload Steps:
-  1. Make sure your column name for url is "url".
-  2. Upload you CSV file.
-  3. Select if you want advanced search.
+  1. Make sure your column name for the URL is "url".
+  2. Upload your CSV file.
+  3. Select if you want an advanced search.
 <img src="/readme/file.png" width="720px" height="338px"/>
